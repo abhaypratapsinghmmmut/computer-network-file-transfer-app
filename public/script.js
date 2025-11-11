@@ -7,10 +7,10 @@ const startBtn = document.getElementById("startBtn");
 const myIp = document.getElementById("myIp");
 const fileList = document.getElementById("fileList");
 
-// 🔹 Display device IP
+//Display device IP
 myIp.textContent = window.location.hostname || "Unavailable";
 
-// 📤 Send File
+//Send File
 sendBtn.addEventListener("click", () => {
   const ip = receiverIpInput.value.trim();
   const file = fileInput.files[0];
@@ -49,7 +49,7 @@ sendBtn.addEventListener("click", () => {
   xhr.send(formData);
 });
 
-// 📥 Receive Files
+//Receive Files
 startBtn.addEventListener("click", () => {
   startBtn.disabled = true;
   startBtn.textContent = "Receiving...";
@@ -57,7 +57,7 @@ startBtn.addEventListener("click", () => {
   setInterval(refreshFiles, 5000);
 });
 
-// 🔁 Refresh File List
+//Refresh File List
 async function refreshFiles() {
   try {
     const res = await fetch("/files");

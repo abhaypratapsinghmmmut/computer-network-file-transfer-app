@@ -1,4 +1,3 @@
-// ====== LAN File Transfer Server ======
 const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
@@ -11,11 +10,11 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.static("public"));
 
-// ====== Ensure uploads folder exists ======
+//Ensure uploads folder exists
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-// ====== Multer setup ======
+//Multer setup
 const storage = multer.diskStorage({
   destination: (_, __, cb) => cb(null, uploadDir),
   filename: (_, file, cb) => {
@@ -25,8 +24,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-
-// ====== Routes ======
 
 // Upload file
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -51,7 +48,6 @@ app.get("/download/:filename", (req, res) => {
   res.download(filePath);
 });
 
-// ====== Start Server ======
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📡 Access from other devices on LAN: http://<your-ip>:${PORT}`);
