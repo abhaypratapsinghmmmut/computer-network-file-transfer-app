@@ -46,15 +46,15 @@ Follow these steps to run the app locally on your LAN network 👇
 ```bash
 git clone https://github.com/yourusername/lan-file-transfer.git
 cd lan-file-transfer
+
 2. Install Dependencies
 Make sure you have Node.js (v14 or later) installed.
-Then run:
 
-npm install express multer cors
+Then run:  npm install express multer cors
+
 3. Start the Server
-Run:
+Run:  node server.js
 
-node server.js
 You should see something like this:
 
  Server running on http://localhost:5000
